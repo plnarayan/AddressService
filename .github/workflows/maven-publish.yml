@@ -54,7 +54,9 @@ jobs:
 
     - name: Get release version
       id: get_version
-      run: echo "VERSION=$(npx semantic-release --dry-run | grep 'nextRelease:' | awk '{print $2}')" >> $GITHUB_ENV
+      run: |
+        RELEASE_VERSION=$(npx semantic-release --dry-run | grep -oP '(?<=nextRelease: ).*')
+        echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV
 
     - name: Rename .jar file
       run: |
@@ -63,9 +65,7 @@ jobs:
 
     - name: List files in the repository
       run: ls -R ./target
-   # Step 5: Rename the JAR file with the version
- #   - name: Rename JAR file with version
-  #    run: mv ./target/AddressService-0.0.1-SNAPSHOT.jar ./target/AddressService-0.0.1-SNAPSHOT.jar-${{ env.VERSION }}.jar
+  
  # Step 7: Upload the versioned JAR file as an artifact
  #   - name: Upload JAR file
   #    uses: actions/upload-artifact@v4
