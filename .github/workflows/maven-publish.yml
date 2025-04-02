@@ -30,7 +30,26 @@ jobs:
       # Step 3: Build the project with Maven (skip tests)
     - name: Build with Maven
       run: mvn -f ./pom.xml clean install -DskipTests
-   
+      
+    - name: Set up Git
+      run: |
+        git config --global user.name 'pnarayan'
+        git config --global user.email 'lakshminarayan.p3@gmail.com'
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      with:
+        tag_name: v${{ github.sha }}
+        release_name: Release v${{ github.sha }}
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+
+    - name: Publish to GitHub Packages Apache Maven
+      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   #  - name: Publish to GitHub Packages Apache Maven
    #   run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
