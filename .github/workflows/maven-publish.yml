@@ -42,14 +42,16 @@ jobs:
       with:
         tag_name: v${{ github.sha }}
         release_name: Release v${{ github.sha }}
+        run : v${{ github.sha }}
+        
         draft: false
         prerelease: false
         generate_release_notes: true
 
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+   # - name: Publish to GitHub Packages Apache Maven
+   #   run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+   #   env:
+   #     GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
 
   #  - name: Publish to GitHub Packages Apache Maven
    #   run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
