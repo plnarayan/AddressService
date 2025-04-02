@@ -47,7 +47,7 @@ jobs:
 
     - name: Run semantic release
       env:
-        GITHUB_TOKEN: "33bf4080ab5589381b3dd7e973389b26233b65e3"
+        GITHUB_TOKEN: 33bf4080ab5589381b3dd7e973389b26233b65e3
       run: semantic-release
 
    # - name: Publish to GitHub Packages Apache Maven
