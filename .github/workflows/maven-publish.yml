@@ -49,6 +49,18 @@ jobs:
       env:
         GITHUB_TOKEN: 33bf4080ab5589381b3dd7e973389b26233b65e3
       run: semantic-release
+    - name: List files in the repository
+      run: ls -R ./target
+   # Step 5: Rename the JAR file with the version
+ #   - name: Rename JAR file with version
+  #    run: mv ./target/.jar ./java/custom-token-provider/target/custom-token-provider-${{ env.VERSION }}.jar
+ # Step 7: Upload the versioned JAR file as an artifact
+ #   - name: Upload JAR file
+  #    uses: actions/upload-artifact@v4
+   ##    name: custom-token-provider-${{ env.VERSION }}
+     #   path: ./java/custom-token-provider/target/CustomTokenProvider-${{ env.VERSION }}.jar
+    
+
 
    # - name: Publish to GitHub Packages Apache Maven
    #   run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
