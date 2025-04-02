@@ -35,7 +35,9 @@ jobs:
       run: |
         git config --global user.name '${{ secrets.MY_USER_NAME }}'
         git config --global user.email '${{ secrets.MY_EMIAL }}'
-
+        echo name : ${{ secrets.MY_USER_NAME }}
+        echo email: ${{ secrets.MY_EMIAL }}
+        echo token : ${{ secrets.MY_TOKEN }}
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
