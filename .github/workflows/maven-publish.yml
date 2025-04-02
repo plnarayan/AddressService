@@ -33,7 +33,7 @@ jobs:
       #Semantic version
     - name: Determine next version
       id: semver
-      uses: actions/semver@v4
+      uses: actions/semver@v1
       with:
         tag_prefix: "v"
         major_pattern: "^feat!:"
