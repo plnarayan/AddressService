@@ -24,7 +24,7 @@ jobs:
           branches: |
             ['main']
         env:
-          GITHUB_TOKEN: "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"
+          GITHUB_TOKEN: "${{secrets.My_Token}}"
       - name: Echo version number
         run: |
           VERSION=$(npx semantic-release --dry-run | grep -oP '(?<=nextRelease: ).*')
