@@ -61,7 +61,7 @@ jobs:
     - name: Rename .jar file
       run: |
         VERSION=$(semantic-release --dry-run | grep "nextRelease:" | awk '{print $2}')
-        echo " Version is "= $semantic-release
+        echo " Version is "= $(semantic-release --dry-run)
         mv ./target/AddressService-0.0.1-SNAPSHOT.jar ./target/AddressService-$VERSION .jar
 
     - name: List files in the repository
